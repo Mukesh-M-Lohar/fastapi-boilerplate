@@ -24,7 +24,7 @@ class DBOperations(Generic[ModelType]):
         self,
         id: UUID | str,
         params: dict,
-        synchronize_session: SynchronizeSessionEnum = SynchronizeSessionEnum.FALSE,
+        synchronize_session: SynchronizeSessionEnum = False,
     ) -> None:
         query = (
             update(self.model)
@@ -40,7 +40,7 @@ class DBOperations(Generic[ModelType]):
     async def delete_by_id(
         self,
         id: UUID | str,
-        synchronize_session: SynchronizeSessionEnum = SynchronizeSessionEnum.FALSE,
+        synchronize_session: SynchronizeSessionEnum = False,
     ) -> None:
         query = (
             delete(self.model)

@@ -1,11 +1,12 @@
-from pydantic import BaseModel, Field
-from sqlalchemy import UUID
+from uuid import UUID
+
+from pydantic import Field
 
 from core.db.mixins.base_mixin import StatusMixin, TimestampMixin
 from edusmart.schema.base import ModifyBy
 
 
-class RoleBase(BaseModel, StatusMixin):
+class RoleBase(StatusMixin):
     name: str = Field(min_length=10)
     display_name: str = Field(min_length=15)
     description: str = Field(min_length=15)

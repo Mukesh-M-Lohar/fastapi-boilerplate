@@ -21,8 +21,8 @@ class CRUDRouter:
         self.create_model = create_model
         self.db_ops = db_ops
         self.response_model = response_model
-        self.router = self.create_router(**kwargs)
         self.service_name = service_name
+        self.router = self.create_router(**kwargs)
 
     def create_router(self, **kwargs) -> APIRouter:
         router = APIRouter(tags=[f"{self.service_name.upper()}_ROUTE"], **kwargs)
@@ -32,6 +32,7 @@ class CRUDRouter:
             status_code=status.HTTP_201_CREATED,
         )
         async def create_item(item_data: self.create_model):
+            f"""create a new {self.service_name} item"""
             return self.db_ops["save"](item_data)
 
         @router.get(
@@ -40,6 +41,7 @@ class CRUDRouter:
             response_model=list[self.response_model],
         )
         async def get_all_items():
+            f"""get all {self.service_name} items"""
             return self.db_ops["get_all"]()
 
         @router.get(
@@ -48,6 +50,7 @@ class CRUDRouter:
             response_model=self.response_model,
         )
         async def get_item(item_id: str | UUID):
+            f""" get item {self.service_name}"""
             return self.db_ops["get_by_id"](item_id)
 
         @router.put(
@@ -56,6 +59,7 @@ class CRUDRouter:
             response_model=self.response_model,
         )
         async def replace_item(item_id: str | UUID, item_data: dict):
+            f"""PUT update {self.service_name}"""
             return self.db_ops["update_by_id"](item_id, params=item_data)
 
         @router.patch(
@@ -64,12 +68,16 @@ class CRUDRouter:
             response_model=self.response_model,
         )
         async def update_item(item_id: str | UUID, item_data: dict):
+            f"""Patch update {self.service_name}"""
+
             return self.db_ops["update_by_id"](item_id, params=item_data)
 
         @router.delete(
             f"{self.service_name}/delete", status_code=status.HTTP_202_ACCEPTED
         )
         async def delete_item(item_id: str | UUID):
+            f"""delete Item {self.service_name}"""
+
             if self.db_ops["delete_by_id"](item_id):
                 raise HTTPException(
                     detail=f"Deleted item{self.service_name}",

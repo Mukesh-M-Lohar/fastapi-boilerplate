@@ -1,7 +1,8 @@
+import sqlmodel
 from pydantic import BaseModel, Field
 
 
-class Common(BaseModel):
+class Common(sqlmodel.SQLModel):
     city: str = Field(description="city")
     pin_code: str = Field(description="pin_code")
     email: str = Field(

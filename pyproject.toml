@@ -32,6 +32,7 @@ asyncpg = "^0.29.0"
 psycopg = "^3.1.19"
 psycopg2-binary = "^2.9.9"
 pre-commit = "^3.7.1"
+sqlmodel = "^0.0.18"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"

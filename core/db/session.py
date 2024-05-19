@@ -9,8 +9,9 @@ from sqlalchemy.ext.asyncio import (
     async_sessionmaker,
     create_async_engine,
 )
-from sqlalchemy.orm import DeclarativeBase, Session
+from sqlalchemy.orm import Session
 from sqlalchemy.sql.expression import Delete, Insert, Update
+from sqlmodel import SQLModel
 
 from core.config import config
 
@@ -59,7 +60,7 @@ session = async_scoped_session(
 )
 
 
-class Base(DeclarativeBase): ...
+class Base(SQLModel): ...
 
 
 @asynccontextmanager
