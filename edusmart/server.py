@@ -13,10 +13,12 @@ from core.fastapi.middlewares import (
     SQLAlchemyMiddleware,
 )
 from core.helpers.cache import Cache, CustomKeyMaker, RedisBackend
+from edusmart.role.api.role_api import create_role_router, create_user_router
 
 
 def init_routers(app_: FastAPI) -> None:
-    pass
+    app_.include_router(create_user_router())
+    app_.include_router(create_role_router())
 
 
 def init_listeners(app_: FastAPI) -> None:
