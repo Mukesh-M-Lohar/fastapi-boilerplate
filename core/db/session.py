@@ -59,8 +59,7 @@ session = async_scoped_session(
 )
 
 
-class Base(DeclarativeBase):
-    ...
+class Base(DeclarativeBase): ...
 
 
 @asynccontextmanager

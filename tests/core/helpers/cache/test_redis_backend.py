@@ -47,8 +47,7 @@ async def test_set_dict():
     await redis_client.delete(key)
 
 
-class Test:
-    ...
+class Test: ...
 
 
 @pytest.mark.asyncio

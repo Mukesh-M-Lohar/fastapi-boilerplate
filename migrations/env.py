@@ -3,7 +3,7 @@ import sys
 from logging.config import fileConfig
 
 from alembic import context
-from sqlalchemy import pool, create_engine
+from sqlalchemy import create_engine, pool
 
 parent_dir = os.path.abspath(os.path.join(os.getcwd(), ".."))
 sys.path.append(parent_dir)
@@ -19,14 +19,15 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
+# For auto generate schemas
+from core.config import config
+from core.db import Base
+
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-
-# For auto generate schemas
-from core.config import config
-from core.db import Base
+from edusmart import db_models  # noqa #F401
 
 target_metadata = Base.metadata
 
@@ -70,7 +71,7 @@ def run_migrations_online():
     and associate a connection with the context.
     """
     connectable = create_engine(
-        config.WRITER_DB_URL.replace("aiomysql", "pymysql"),
+        config.WRITER_DB_URL.replace("postgresql+asyncpg", "postgresql+psycopg2"),
         poolclass=pool.NullPool,
     )
 

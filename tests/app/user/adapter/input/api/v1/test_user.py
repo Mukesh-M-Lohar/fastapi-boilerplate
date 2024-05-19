@@ -2,11 +2,11 @@ import pytest
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.server import app
-from app.user.adapter.output.persistence.sqlalchemy.user import UserSQLAlchemyRepo
-from app.user.application.exception import (
-    PasswordDoesNotMatchException,
+from edusmart.server import app
+from edusmart.user.adapter.output.persistence.sqlalchemy.user import UserSQLAlchemyRepo
+from edusmart.user.application.exception import (
     DuplicateEmailOrNicknameException,
+    PasswordDoesNotMatchException,
     UserNotFoundException,
 )
 from tests.support.token import USER_ID_1_TOKEN

@@ -1,5 +1,5 @@
-from app.user.domain.entity.user import User
-from app.user.domain.vo.location import Location
+from edusmart.user.domain.entity.user import User
+from edusmart.user.domain.vo.location import Location
 
 
 def make_user(

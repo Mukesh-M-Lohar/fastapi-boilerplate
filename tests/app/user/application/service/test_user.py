@@ -2,16 +2,18 @@ from unittest.mock import AsyncMock
 
 import pytest
 
-from app.user.adapter.output.persistence.repository_adapter import UserRepositoryAdapter
-from app.user.application.exception import (
+from core.helpers.token import TokenHelper
+from edusmart.user.adapter.output.persistence.repository_adapter import (
+    UserRepositoryAdapter,
+)
+from edusmart.user.application.exception import (
     DuplicateEmailOrNicknameException,
     PasswordDoesNotMatchException,
     UserNotFoundException,
 )
-from app.user.application.service.user import UserService
-from app.user.domain.command import CreateUserCommand
-from app.user.domain.entity.user import UserRead
-from core.helpers.token import TokenHelper
+from edusmart.user.application.service.user import UserService
+from edusmart.user.domain.command import CreateUserCommand
+from edusmart.user.domain.entity.user import UserRead
 from tests.support.user_fixture import make_user
 
 repository_mock = AsyncMock(spec=UserRepositoryAdapter)

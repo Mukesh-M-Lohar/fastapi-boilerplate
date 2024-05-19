@@ -3,8 +3,10 @@ from unittest.mock import AsyncMock
 import pytest
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.user.adapter.output.persistence.repository_adapter import UserRepositoryAdapter
-from app.user.domain.repository.user import UserRepo
+from edusmart.user.adapter.output.persistence.repository_adapter import (
+    UserRepositoryAdapter,
+)
+from edusmart.user.domain.repository.user import UserRepo
 from tests.support.user_fixture import make_user
 
 user_repo_mock = AsyncMock(spec=UserRepo)

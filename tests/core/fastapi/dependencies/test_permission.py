@@ -3,7 +3,6 @@ from unittest.mock import AsyncMock, Mock
 import pytest
 from fastapi import Request
 
-from app.container import Container
 from core.fastapi.dependencies import (
     AllowAll,
     IsAdmin,
@@ -11,6 +10,7 @@ from core.fastapi.dependencies import (
     PermissionDependency,
 )
 from core.fastapi.dependencies.permission import UnauthorizedException
+from edusmart.container import Container
 
 container = Container()
 

@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "local",
+            "group": "local",
+            "database": "edusmart",
+            "username": "admin",
+            "password": "admin"
+        }
+    ]
+}
